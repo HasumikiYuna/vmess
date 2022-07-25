@@ -107,7 +107,7 @@ error_detect_depends() {
 pre_install_docker_compose() {
 
     read -p "Nhập Link Web :" domain
-    echo -e "API KEY là : ${domain}"
+    echo -e "Link Web là : ${domain}"
 
     read -p "Nhập Api Key :" APIKEY
     echo -e "API KEY là : ${APIKEY}"
