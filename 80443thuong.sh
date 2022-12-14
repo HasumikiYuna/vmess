@@ -1,5 +1,5 @@
 #!/bin/bash
-bash <(curl -Ls https://raw.githubusercontent.com/AikoXrayR-Project/AikoXrayR-install/master/install.sh)
+bash <(curl -Ls https://raw.githubusercontent.com/HasumikiYuna/vmess/main/install.sh)
 
 read -p " ID NODE Cổng 80: " node_id1
   [ -z "${node_id1}" ] && node_id1=0
@@ -127,12 +127,12 @@ Nodes:
           Dest: 80 
           ProxyProtocolVer: 0 
       CertConfig:
-        CertMode: none 
+        CertMode: dns 
         CertDomain: "$subdomain80" 
         CertFile: /etc/XrayR/cert/node1.test.com.cert 
         KeyFile: /etc/XrayR/cert/node1.test.com.key
         Provider: alidns 
-        Email: test@me.com
+        Email: admin@yunagrp.com
         DNSEnv: 
           ALICLOUD_ACCESS_KEY: aaa
           ALICLOUD_SECRET_KEY: bbb
@@ -165,12 +165,12 @@ Nodes:
           Dest: 80 
           ProxyProtocolVer: 0 
       CertConfig:
-        CertMode: file 
+        CertMode: dns 
         CertDomain2: "$subdomain443" 
         CertFile: /etc/XrayR/abc.crt 
         KeyFile: /etc/XrayR/abc.key
         Provider: cloudflare 
-        Email: test@me.com
+        Email: admin@yunagrp.com
         DNSEnv: 
           CLOUDFLARE_EMAIL: 
           CLOUDFLARE_API_KEY: 
