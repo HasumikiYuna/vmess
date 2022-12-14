@@ -127,7 +127,7 @@ Nodes:
           Dest: 80 
           ProxyProtocolVer: 0 
       CertConfig:
-        CertMode: dns 
+        CertMode: none 
         CertDomain: "$subdomain80" 
         CertFile: /etc/XrayR/cert/node1.test.com.cert 
         KeyFile: /etc/XrayR/cert/node1.test.com.key
@@ -165,7 +165,7 @@ Nodes:
           Dest: 80 
           ProxyProtocolVer: 0 
       CertConfig:
-        CertMode: dns 
+        CertMode: none 
         CertDomain2: "$subdomain443" 
         CertFile: /etc/XrayR/abc.crt 
         KeyFile: /etc/XrayR/abc.key
