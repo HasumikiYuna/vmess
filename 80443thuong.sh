@@ -12,6 +12,12 @@ read -p " ID NODE Cổng 443: " node_id2
 
       read -p "subdomain trên cf: " subdomain443
   [ -z "$subdomain443" ] && subdomain443="0"
+  
+      read -p "Limitspeed: " speed
+  [ -z "$subdomain443" ] && speed="0"
+  
+      read -p "limit device: " devi
+  [ -z "$devi" ] && devi="0"
 
   
 cd /etc/XrayR
@@ -102,8 +108,8 @@ Nodes:
       Timeout: 30 
       EnableVless: false 
       EnableXTLS: false 
-      SpeedLimit: 0 
-      DeviceLimit: 2 
+      SpeedLimit: "$speed" 
+      DeviceLimit: "$devi" 
       RuleListPath: # /etc/XrayR/rulelist
     ControllerConfig:
       DisableSniffing: True
@@ -140,8 +146,8 @@ Nodes:
       Timeout: 30 
       EnableVless: false 
       EnableXTLS: false 
-      SpeedLimit: 0 
-      DeviceLimit: 2 
+      SpeedLimit: "$speed" 
+      DeviceLimit: "$devi" 
       RuleListPath: # /etc/XrayR/rulelist
     ControllerConfig:
       DisableSniffing: True
