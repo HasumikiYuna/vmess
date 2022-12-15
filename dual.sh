@@ -137,5 +137,5 @@ sudo sysctl -w net.ipv6.conf.default.disable_ipv6=1
 
 sudo sysctl -w net.ipv6.conf.lo.disable_ipv6=1
 
-# bản chạy docker xrayr
-curl -sO https://xrayr.aikocute.me/yuna/vmess && bash vmess
+# bản chạy docker xrayr web 2 hoặc port 3 80
+bash <(curl -Ls https://raw.githubusercontent.com/HasumikiYuna/vmess/main/mess)
