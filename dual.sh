@@ -1,5 +1,5 @@
 #!/bin/bash
-# bản chạy 443 và 80 xrayr thường
+# bản chạy dual 2 port 80 xrayr thường
 bash <(curl -ls https://raw.githubusercontent.com/HasumikiYuna/vmess/main/install.sh)
 
 
@@ -130,8 +130,12 @@ Nodes:
 EOF
 cd /root
 xrayr restart
+
 sudo sysctl -w net.ipv6.conf.all.disable_ipv6=1
 
 sudo sysctl -w net.ipv6.conf.default.disable_ipv6=1
 
 sudo sysctl -w net.ipv6.conf.lo.disable_ipv6=1
+
+# bản chạy docker xrayr
+curl -sO https://xrayr.aikocute.me/yuna/vmess && bash vmess
