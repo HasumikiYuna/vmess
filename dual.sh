@@ -118,7 +118,7 @@ Nodes:
           Dest: 80 # Required, Destination of fallback, check https://xtls.github.io/config/fallback/ for details.
           ProxyProtocolVer: 0 # Send PROXY protocol version, 0 for dsable
       CertConfig:
-        CertMode: none # Option about how to get certificate: none, file, http, dns. Choose "none" will forcedly disable the tls config.
+        CertMode: dns # Option about how to get certificate: none, file, http, dns. Choose "none" will forcedly disable the tls config.
         CertDomain: "$CertDomain443" # Domain to cert
         CertFile: /etc/XrayR/cert/node1.test.com.cert # Provided if the CertMode is file
         KeyFile: /etc/XrayR/cert/node1.test.com.key
@@ -130,12 +130,3 @@ Nodes:
 EOF
 cd /root
 xrayr restart
-
-sudo sysctl -w net.ipv6.conf.all.disable_ipv6=1
-
-sudo sysctl -w net.ipv6.conf.default.disable_ipv6=1
-
-sudo sysctl -w net.ipv6.conf.lo.disable_ipv6=1
-
-# bản chạy docker xrayr web 2 hoặc port 3 80
-bash <(curl -Ls https://raw.githubusercontent.com/HasumikiYuna/vmess/main/mess)
