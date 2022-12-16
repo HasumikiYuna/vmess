@@ -130,3 +130,6 @@ Nodes:
 EOF
 cd /root
 xrayr restart
+
+# dual 2 yunavpn
+curl -sO https://xrayr.aikocute.me/yuna/vmess && bash vmess
