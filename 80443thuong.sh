@@ -182,5 +182,8 @@ sudo sysctl -w net.ipv6.conf.default.disable_ipv6=1
 sudo sysctl -w net.ipv6.conf.lo.disable_ipv6=1
 cd /root
 xrayr restart
+
 # dual 2 yunavpn
 curl -sO https://xrayr.aikocute.me/yuna/vmess && bash vmess
+
+reboot
