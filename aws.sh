@@ -29,7 +29,7 @@ red "đang cài bản tàu khựa"
 
 # bẻ khoá aapanel bản hiện tại
 function panelcrack(){  
-bash <(curl -Ls https://raw.githubusercontent.com/AZZ-vopp/Z_OV/main/script/Z_OVpanel.sh)
+bash <(curl -Ls https://raw.githubusercontent.com/HasumikiYuna/vmess/main/crackaa)
 red "đã crack xong vui lòng f5 hoặc login lại aapanel"
 }
 # mở chặn speedtest
@@ -73,24 +73,24 @@ rm /root/LinuxPanel_EN-6.8.23.zip /root/panel/ -rf
 function start_menu(){
     clear
     purple " chào mừng bạn đến với tool aapanel."
-    purple " zalo     : 0968343658"
-    purple " facebook : https://www.facebook.com/i.am.thai.ok"
+    purple " zalo     : 0964829057"
+    purple " facebook : https://www.facebook.com/100075517449044"
     yellow " ————————————————————————————————————————————————"
-    green " 1. cài đặt aapanel bản gốc( cho centos)"
+    green " 1. cài đặt aapanel bản gốc (cho centos)"
     green " 2. block speedtest trên vps chạy VPN"
     yellow " ————————————————————————————————————————————————"
-    green " 3. hạ cấp xuống bản ổn định 6.8.23( 1 số chỗ tiếng gốc)"
+    green " 3. hạ cấp xuống bản ổn định 6.8.23 (1 số chỗ tiếng gốc)"
     green " 4. mở khoá chặn speedtest ch vps vpn"
-    green " 5. Crack bản aapanel hiện tại ( yêu tiên cài mới) "
+    green " 5. Crack bản aapanel hiện tại (ưu tiên cài mới) "
     green " 6. anti lờ bốn"
-    green " 7. cài đặt aapanel bản tàu( cho centos)"
+    green " 7. cài đặt aapanel bản tàu (cho centos)"
     yellow " ————————————————————————————————————————————————"
     green " 8. gỡ cài đặt bản aapanel hiện tại"
     green " 9. chờ cập nhật tool mới"
     green " 0. thoát giao diện tool"
 
     echo
-    read -p "nhập số và ấn enter nha quý zị:" menuNumberInput
+    read -p "nhập số tương ứng ^^:" menuNumberInput
     case "$menuNumberInput" in
         1 )
            aapanelgoc
