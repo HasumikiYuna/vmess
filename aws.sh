@@ -72,7 +72,7 @@ rm /root/LinuxPanel_EN-6.8.23.zip /root/panel/ -rf
 # menu
 function start_menu(){
     clear
-    purple " chào mừng bạn đến với tool aapanel."
+    purple " APANEL TOOL BY YUNA"
     purple " zalo     : 0964829057"
     purple " facebook : https://www.facebook.com/100075517449044"
     yellow " ————————————————————————————————————————————————"
