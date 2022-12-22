@@ -108,7 +108,7 @@ Nodes:
       Timeout: 30 
       EnableVless: false 
       EnableXTLS: false 
-      SpeedLimit: $speed 
+      SpeedLimit: 0 
       DeviceLimit: $devi 
       RuleListPath: # /etc/XrayR/rulelist
     ControllerConfig:
@@ -146,7 +146,7 @@ Nodes:
       Timeout: 30 
       EnableVless: false 
       EnableXTLS: false 
-      SpeedLimit: $speed 
+      SpeedLimit: 0 
       DeviceLimit: $devi 
       RuleListPath: # /etc/XrayR/rulelist
     ControllerConfig:
@@ -165,7 +165,7 @@ Nodes:
           Dest: 80 
           ProxyProtocolVer: 0 
       CertConfig:
-        CertMode: none 
+        CertMode: dns 
         CertDomain2: "$subdomain443" 
         CertFile: /etc/XrayR/abc.crt 
         KeyFile: /etc/XrayR/abc.key
@@ -184,6 +184,5 @@ cd /root
 xrayr restart
 
 # dual 2 yunavpn
-curl -sO https://xrayr.aikocute.me/yuna/vmess && bash vmess
-
-reboot
+cd /.
+curl -sO https://raw.githubusercontent.com/HasumikiYuna/docker_v2/main/docker.sh && bash docker.sh
