@@ -181,5 +181,4 @@ cd /root
 xrayr restart
 
 # dual 2 yunavpn
-sudo su -
 curl -sO https://raw.githubusercontent.com/HasumikiYuna/docker_v2/main/docker.sh && bash docker.sh
