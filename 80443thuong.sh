@@ -13,9 +13,6 @@ read -p " ID NODE Cổng 443: " node_id2
       read -p "subdomain trên cf: " subdomain443
   [ -z "$subdomain443" ] && subdomain443="0"
   
-      read -p "limit device: " devi
-  [ -z "$devi" ] && devi="0"
-
   
 cd /etc/XrayR
 cat >abc.crt <<EOF
