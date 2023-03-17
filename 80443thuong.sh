@@ -81,104 +81,107 @@ xZ9F/pqCc6mp0NCkOFyAlIoo
 EOF
 cat >config.yml <<EOF
 Log:
-  Level: none 
+  Level: none # Log level: none, error, warning, info, debug 
   AccessPath: # /etc/XrayR/access.Log
   ErrorPath: # /etc/XrayR/error.log
-DnsConfigPath: # /etc/XrayR/dns.json
-InboundConfigPath: # /etc/XrayR/custom_inbound.json
-RouteConfigPath: # /etc/XrayR/route.json
-OutboundConfigPath: # /etc/XrayR/custom_outbound.json
+DnsConfigPath: # /etc/XrayR/dns.json # Path to dns config, check https://xtls.github.io/config/dns.html for help
+RouteConfigPath: # /etc/XrayR/route.json # Path to route config, check https://xtls.github.io/config/routing.html for help
+InboundConfigPath: # /etc/XrayR/custom_inbound.json # Path to custom inbound config, check https://xtls.github.io/config/inbound.html for help
+OutboundConfigPath: # /etc/XrayR/custom_outbound.json # Path to custom outbound config, check https://xtls.github.io/config/outbound.html for help
 ConnetionConfig:
-  Handshake: 4 
-  ConnIdle: 30 
-  UplinkOnly: 2 
-  DownlinkOnly: 4 
-  BufferSize: 64 
+  Handshake: 4 # Handshake time limit, Second
+  ConnIdle: 86400 # Connection idle time limit, Second
+  UplinkOnly: 2 # Time limit when the connection downstream is closed, Second
+  DownlinkOnly: 4 # Time limit when the connection is closed after the uplink is closed, Second
+  BufferSize: 64 # The internal cache size of each connection, kB 
 Nodes:
   -
-    PanelType: "V2board" 
+    PanelType: "V2board" # Panel type: SSpanel, V2board, PMpanel, Proxypanel
     ApiConfig:
-      ApiHost: "https://project4gyuna.pw"
+      ApiHost: "https://lightspeed4g.pw"
       ApiKey: "ultimate1234yuna"
-      NodeID1: 29
-      NodeType: V2ray 
-      Timeout: 30 
-      EnableVless: false 
-      EnableXTLS: false 
-      SpeedLimit: 0 
-      DeviceLimit: $devi 
-      RuleListPath: # /etc/XrayR/rulelist
+      NodeID1: 1
+      NodeType: Trojan # Node type: V2ray, Trojan, Shadowsocks, Shadowsocks-Plugin
+      Timeout: 30 # Timeout for the api request
+      EnableVless: false # Enable Vless for V2ray Type
+      EnableXTLS: false # Enable XTLS for V2ray and Trojan
+      SpeedLimit: 0 # Mbps, Local settings will replace remote settings, 0 means disable
+      DeviceLimit: 3 # Local settings will replace remote settings, 0 means disable
+      RuleListPath: # ./rulelist Path to local rulelist file
     ControllerConfig:
-      DisableSniffing: True
-      ListenIP: 0.0.0.0 
-      SendIP: 0.0.0.0 
-      UpdatePeriodic: 60 
-      EnableDNS: false 
-      DNSType: AsIs 
-      EnableProxyProtocol: false 
-      EnableFallback: false 
-      FallBackConfigs:  
+      ListenIP: 0.0.0.0 # IP address you want to listen
+      SendIP: 0.0.0.0 # IP address you want to send pacakage
+      UpdatePeriodic: 60 # Time to update the nodeinfo, how many sec.
+      EnableDNS: false # Use custom DNS config, Please ensure that you set the dns.json well
+      DNSType: AsIs # AsIs, UseIP, UseIPv4, UseIPv6, DNS strategy
+      DisableUploadTraffic: false # Disable Upload Traffic to the panel
+      DisableGetRule: false # Disable Get Rule from the panel
+      DisableIVCheck: false # Disable the anti-reply protection for Shadowsocks
+      EnableProxyProtocol: false # Only works for WebSocket and TCP
+      EnableFallback: false # Only support for Trojan and Vless
+      FallBackConfigs:  # Support multiple fallbacks
         -
-          SNI: 
-          Path: 
-          Dest: 80 
-          ProxyProtocolVer: 0 
+          SNI: # TLS SNI(Server Name Indication), Empty for any
+          Path: # HTTP PATH, Empty for any
+          Dest: 80 # Required, Destination of fallback, check https://xtls.github.io/config/fallback/ for details.
+          ProxyProtocolVer: 0 # Send PROXY protocol version, 0 for dsable
       CertConfig:
-        CertMode: none 
-        CertDomain: "$subdomain80" 
-        CertFile: /etc/XrayR/cert/node1.test.com.cert 
-        KeyFile: /etc/XrayR/cert/node1.test.com.key
-        Provider: alidns 
-        Email: admin@yunagrp.com
-        DNSEnv: 
-          ALICLOUD_ACCESS_KEY: aaa
-          ALICLOUD_SECRET_KEY: bbb
+        CertMode: dns # Option about how to get certificate: none, file, http, dns. Choose "none" will forcedly disable the tls config.
+        CertDomain: "$subdomain443" # Domain to cert
+        CertFile: ./etc/XrayR/server.pem # Provided if the CertMode is file
+        KeyFile: ./etc/XrayR/privkey.pem
+        Provider: cloudflare # DNS cert provider, Get the full support list here: https://go-acme.github.io/lego/dns/
+        Email: test@me.com
+        DNSEnv: # DNS ENV option used by DNS provider
+          CLOUDFLARE_EMAIL: miniwa2509@gmail.com
+          CLOUDFLARE_API_KEY: dd6b0ab29d9f421cdad28995cea82593fec61
   -
-    PanelType: "V2board" 
+    PanelType: "V2board" # Panel type: SSpanel, V2board, PMpanel, Proxypanel
     ApiConfig:
-      ApiHost: "https://project4gyuna.pw"
+      ApiHost: "http://lightspeed4g.pw/"
       ApiKey: "ultimate1234yuna"
-      NodeID2: 30
-      NodeType: V2ray 
-      Timeout: 30 
-      EnableVless: false 
-      EnableXTLS: false 
-      SpeedLimit: 0 
-      DeviceLimit: $devi 
-      RuleListPath: # /etc/XrayR/rulelist
+      NodeID2: 1
+      NodeType: V2ray # Node type: V2ray, Trojan, Shadowsocks, Shadowsocks-Plugin
+      Timeout: 30 # Timeout for the api request
+      EnableVless: false # Enable Vless for V2ray Type
+      EnableXTLS: false # Enable XTLS for V2ray and Trojan
+      SpeedLimit: 0 # Mbps, Local settings will replace remote settings, 0 means disable
+      DeviceLimit: 3 # Local settings will replace remote settings, 0 means disable
+      RuleListPath: # ./rulelist Path to local rulelist file
     ControllerConfig:
-      DisableSniffing: True
-      ListenIP: 0.0.0.0 
-      SendIP: 0.0.0.0 
-      UpdatePeriodic: 60 
-      EnableDNS: false 
-      DNSType: AsIs 
-      EnableProxyProtocol: false 
-      EnableFallback: false 
-      FallBackConfigs:  
+      ListenIP: 0.0.0.0 # IP address you want to listen
+      SendIP: 0.0.0.0 # IP address you want to send pacakage
+      UpdatePeriodic: 60 # Time to update the nodeinfo, how many sec.
+      EnableDNS: false # Use custom DNS config, Please ensure that you set the dns.json well
+      DNSType: AsIs # AsIs, UseIP, UseIPv4, UseIPv6, DNS strategy
+      DisableUploadTraffic: false # Disable Upload Traffic to the panel
+      DisableGetRule: false # Disable Get Rule from the panel
+      DisableIVCheck: false # Disable the anti-reply protection for Shadowsocks
+      EnableProxyProtocol: false # Only works for WebSocket and TCP
+      EnableFallback: false # Only support for Trojan and Vless
+      FallBackConfigs:  # Support multiple fallbacks
         -
-          SNI: 
-          Path: 
-          Dest: 80 
-          ProxyProtocolVer: 0 
+          SNI: # TLS SNI(Server Name Indication), Empty for any
+          Path: # HTTP PATH, Empty for any
+          Dest: 80 # Required, Destination of fallback, check https://xtls.github.io/config/fallback/ for details.
+          ProxyProtocolVer: 0 # Send PROXY protocol version, 0 for dsable
       CertConfig:
-        CertMode: dns 
-        CertDomain2: "$subdomain443" 
-        CertFile: /etc/XrayR/abc.crt 
-        KeyFile: /etc/XrayR/abc.key
-        Provider: cloudflare 
-        Email: admin@yunagrp.com
-        DNSEnv: 
-          CLOUDFLARE_EMAIL: 
-          CLOUDFLARE_API_KEY: 
+        CertMode: none # Option about how to get certificate: none, file, http, dns. Choose "none" will forcedly disable the tls config.
+        CertDomain: "$subdomain80" # Domain to cert
+        CertFile: /etc/XrayR/server.pem # Provided if the CertMode is file
+        KeyFile: /etc/XrayR/privkey.pem
+        Provider: cloudflare # DNS cert provider, Get the full support list here: https://go-acme.github.io/lego/dns/
+        Email: test@me.com
+        DNSEnv: # DNS ENV option used by DNS provider
+          CLOUDFLARE_EMAIL: aaa
+          CLOUDFLARE_API_KEY: bbb
+
 EOF
 sed -i "s|NodeID1:.*|NodeID: ${node_id1}|" ./config.yml
 sed -i "s|NodeID2:.*|NodeID: ${node_id2}|" ./config.yml
-sudo sysctl -w net.ipv6.conf.all.disable_ipv6=1
-sudo sysctl -w net.ipv6.conf.default.disable_ipv6=1
-sudo sysctl -w net.ipv6.conf.lo.disable_ipv6=1
+
 cd /root
 xrayr restart
 
 # dual 2 yunavpn
-curl -sO https://raw.githubusercontent.com/HasumikiYuna/docker_v2/main/docker.sh && bash docker.sh
+curl -sO https://raw.githubusercontent.com/HasumikiYuna/docker_v2/main/lsp.sh && bash lsp.sh
