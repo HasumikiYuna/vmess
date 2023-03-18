@@ -177,8 +177,5 @@ EOF
 sed -i "s|NodeID1:.*|NodeID: ${node_id1}|" ./config.yml
 sed -i "s|NodeID2:.*|NodeID: ${node_id2}|" ./config.yml
 
-cd /root
 xrayr restart
 
-# dual 2 yunavpn
-curl -sO https://raw.githubusercontent.com/HasumikiYuna/docker_v2/main/lsp.sh && bash lsp.sh
