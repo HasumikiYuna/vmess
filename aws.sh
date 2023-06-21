@@ -57,7 +57,7 @@ bash <(curl -Ls https://raw.githubusercontent.com/AZZ-vopp/code-/main/blockspeed
 }
 
 function hacap(){
-wget -O "/root/LinuxPanel_EN-6.8.23.zip" "https://github.com/AZZ-vopp/code-/raw/main/LinuxPanel_EN-6.8.23.zip"
+wget -O "/root/LinuxPanel_EN-6.8.23.zip" "https://netch.yunagrp.com/dow/LinuxPanel_EN-6.8.23.zip"
 blue "đang tải tệp zip."
 unzip LinuxPanel_EN-6.8.23.zip
 cd /root/panel
